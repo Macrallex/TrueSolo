@@ -1,0 +1,14 @@
+Project name: True Solo Mutator for Killing Floor 2
+
+Description: This mutator makes solo mode play like co-op by removing solo mode's  massive damage reductions on Zeds, forcing the syringe to heal 20 HP at base rather than 50 HP
+             and gives all bosses a 30% speed boost on spawning to replicate co-op Last Man Standing boss wave scenarios.
+
+Installation: If you wish to install this mutator, please proceed to the Killing Floor 2 workshop at https://steamcommunity.com/sharedfiles/filedetails/?id=2263399756&searchtext=
+              For server install, instructions are at the bottom of the workshop page.
+
+Usage: Start the game, open the console with the tilde key and put "open KF-Nuked?difficulty=3?gamelength=2?mutator=TrueSolo.TrueSoloMutator" without the quotation marks.
+       For more advanced setups, see the bottom of the workshop page.
+
+Credits: My profile is linked to the workshop page.
+
+License: Do what you please with these files whether it is too learn or cannibalize parts of it for your own mutator/gamemode.
