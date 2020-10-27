@@ -1,14 +1,47 @@
-class TrueSoloHealingBase extends KFWeap_HealerBase; // Changes 1 variable, "StandAloneHealAmount" to a float value of 20 rather than 50. The rest of the default properties was pasted in because for some reason not doing this completely broke the Hemoclobber in-game.
+class TrueSoloHealingBase extends KFWeap_HealerBase 
+		config(TrueSolo); // The class enables the configuration of base healing and base syringe recharge time in KFTrueSolo.ini. See file location commented in TrueSoloMutator.
+		
+		var config float TrueSoloStandAloneHealAmount;     // Creates a new configurable variable for the solo base healing amount for KFTrueSolo.ini
+		var config float TrueSoloHealSelfRechargeSeconds;  // Creates a new configurable variable for the syringe base recharge time KFTrueSolo.ini
 
-	
-	
+simulated function CustomFire() // Redeclared parent function to replace variables
+{
+	local float HealAmount;
+
+	if( Role == ROLE_Authority )
+	{
+		// Healing a teammate
+		if( CurrentFireMode == DEFAULT_FIREMODE )
+		{
+			HealAmount = InstantHitDamage[CurrentFireMode];
+			HealTarget.HealDamage( HealAmount, Instigator.Controller, InstantHitDamageTypes[CurrentFireMode]);
+			HealRechargeTime = HealOtherRechargeSeconds;
+		}
+		// Healing Self
+		else if( CurrentFireMode == ALTFIRE_FIREMODE )
+		{
+			if ( GetActivePlayerCount() < 2 )
+			{
+				HealAmount = TrueSoloStandAloneHealAmount; // Replaced "StandAloneHealAmount"
+			}
+			else
+			{
+				HealAmount = InstantHitDamage[CurrentFireMode];
+			}
+			Instigator.HealDamage(HealAmount, Instigator.Controller, InstantHitDamageTypes[CurrentFireMode]);
+			HealRechargeTime = TrueSoloHealSelfRechargeSeconds; // Replaced "HealSelfRechargeSeconds"
+		}
+	}
+}
+
+// Pasted in the entire default properties because for some reason not doing this completely broke the Hemoclobber in-game
 defaultproperties
 {
 
 	UIUpdateInterval=1.f
 	FireTweenTime=0.3f
 	HealingRangeSQ=23000.f
-	StandAloneHealAmount=20.0f
+	StandAloneHealAmount=50
     ScreenUIClass=class'KFGFxWorld_HealerScreen'
 
 	// Aim Assist
