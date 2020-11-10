@@ -1,2 +1,0 @@
-Additive increase in movespeed scaling for all EDAR variants by +0.1 for accuracy
-
