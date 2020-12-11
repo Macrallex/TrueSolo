@@ -2,7 +2,7 @@ class TrueSoloMutator extends KFMutator
 		config(TrueSolo); // This file changes damage scaling, replaces the original syringe, and boosts Hans', Patty's, and Matty's speeds by 30%. The "//"s in the file signify comments I left throughout for explanatory purposes. 
 
 
-	var private const class<KFWeapon> TrueSoloHealingSyringe; // Creates a variable for my solo syringe to be used in replacing the original syringe.
+	vara private const class<KFWeapon> TrueSoloHealingSyringe; // Creates a variable for my solo syringe to be used in replacing the original syringe.
 	
 	
 // I - ZED DAMAGE SCALING VARIABLES - HELL ON EARTH, every "config" variable can be tailored to your personal tastes in KFTrueSolo.ini in MyGames > KillingFloor2 > KFGame > Config  This file enables configuration of individual Zed damage and speed scales along with healing base HP and recharge time. INI assignments and variable names here must match!
